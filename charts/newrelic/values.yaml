@@ -1,0 +1,55 @@
+# Global settings apply to all sub-charts
+global:
+  cluster: cluster-1
+  licenseKey: "052552c092159f297a877532b7621d43FFFFNRAL"
+  lowDataMode: true
+  privileged: true
+
+# Configuration specific to the nri-bundle dependency
+nri-bundle:
+  newrelic-infrastructure:
+    enabled: true
+
+  nri-prometheus:
+    enabled: false
+
+  nri-metadata-injection:
+    enabled: true
+
+  kube-state-metrics:
+    enabled: true
+    image:
+      tag: "v2.13.0"
+
+  nri-kube-events:
+    enabled: true
+
+  newrelic-logging:
+    enabled: true
+    lowDataMode: true
+
+  newrelic-pixie:
+    enabled: false
+
+  pixie-chart:
+    enabled: false
+
+  newrelic-infra-operator:
+    enabled: false
+
+  newrelic-prometheus-agent:
+    enabled: true
+    lowDataMode: true
+    config:
+      kubernetes:
+        integrations_filter:
+          enabled: false
+
+  newrelic-eapm-agent:
+    enabled: false
+
+  k8s-agents-operator:
+    enabled: true
+
+  newrelic-k8s-metrics-adapter:
+    enabled: false
