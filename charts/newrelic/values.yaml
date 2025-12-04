@@ -1,6 +1,6 @@
 # Global settings apply to all sub-charts
 global:
-  cluster: cluster-1
+  cluster: kirthi
   licenseKey:
     secret:
       name: newrelic-license
