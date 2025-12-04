@@ -1,10 +1,12 @@
 # Global settings apply to all sub-charts
 global:
   cluster: kirthi
-  licenseKey:
-    secret:
-      name: newrelic-license
-      key: license
+  
+  # CHANGE 1: Use these two lines to reference your existing Secret
+  # created by External Secrets. Do not use 'licenseKey' here.
+  customSecretName: newrelic-license
+  customSecretLicenseKey: license
+  
   lowDataMode: true
   privileged: true
 
@@ -49,6 +51,5 @@ nri-bundle:
           enabled: false
 
   newrelic-eapm-agent:
-    enabl
-
-
+    # CHANGE 2: Fixed typo 'enabl' to 'enabled: false'
+    enabled: false
