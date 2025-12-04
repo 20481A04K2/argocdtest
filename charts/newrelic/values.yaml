@@ -2,8 +2,7 @@
 global:
   cluster: kirthi
   
-  # CHANGE 1: Use these two lines to reference your existing Secret
-  # created by External Secrets. Do not use 'licenseKey' here.
+  # References the Secret created by your ExternalSecret
   customSecretName: newrelic-license
   customSecretLicenseKey: license
   
@@ -39,8 +38,9 @@ nri-bundle:
   pixie-chart:
     enabled: false
 
+  # THIS MUST BE TRUE to use the Instrumentation CRD
   newrelic-infra-operator:
-    enabled: false
+    enabled: true
 
   newrelic-prometheus-agent:
     enabled: true
@@ -51,5 +51,4 @@ nri-bundle:
           enabled: false
 
   newrelic-eapm-agent:
-    # CHANGE 2: Fixed typo 'enabl' to 'enabled: false'
     enabled: false
