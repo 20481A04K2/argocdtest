@@ -2,7 +2,11 @@ apiVersion: newrelic.com/v1beta2
 kind: Instrumentation
 metadata:
   name: newrelic-instrumentation
-  namespace: argocd  # Added as requested
+  namespace: argocd
+  annotations:
+    # --- ADD THIS LINE ---
+    # This tells ArgoCD: "Don't fail if you don't recognize this resource type yet."
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   agent:
     language: python
