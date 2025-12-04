@@ -1,6 +1,7 @@
 global:
   cluster: "kirthi"
-  customSecret: true
+  # customSecret: true can be removed, usually just name/key is enough, 
+  # but keeping it doesn't hurt if your chart version supports it.
   customSecretName: "newrelic-license"
   customSecretLicenseKey: "license"
   lowDataMode: true
@@ -23,6 +24,15 @@ nri-bundle:
 
   newrelic-infra-operator:
     enabled: true
+    # --- FIX STARTS HERE ---
+    # The operator crashes without at least one policy defined.
+    # We add a specific rule so it only injects if you ask for it.
+    config:
+      policies:
+        - name: "default-policy"
+          pod_label: "newrelic-injection"
+          pod_label_value: "enabled"
+    # --- FIX ENDS HERE ---
 
   newrelic-prometheus-agent:
     enabled: true
@@ -31,7 +41,3 @@ nri-bundle:
       kubernetes:
         integrations_filter:
           enabled: false
-
-
-
-
