@@ -1,46 +1,25 @@
-# Global settings apply to all sub-charts
 global:
-  cluster: kirthi
-
-  # --- FIX STARTS HERE ---
-  # DO NOT use 'licenseKey'.
-  # DO NOT use 'secret: name: ...' nesting.
-  # Use these two specific variables to point to your existing secret:
-  customSecretName: newrelic-license
-  customSecretLicenseKey: license
-  # --- FIX ENDS HERE ---
-
+  cluster: "kirthi"
+  customSecret: true
+  customSecretName: "newrelic-license"
+  customSecretLicenseKey: "license"
   lowDataMode: true
   privileged: true
 
-# Configuration specific to the nri-bundle dependency
 nri-bundle:
   newrelic-infrastructure:
     enabled: true
 
+  nri-kubernetes:
+    enabled: true
+    privileged: true
+
   nri-prometheus:
-    enabled: false
-
-  nri-metadata-injection:
-    enabled: true
-
-  kube-state-metrics:
-    enabled: true
-    image:
-      tag: "v2.13.0"
-
-  nri-kube-events:
     enabled: true
 
   newrelic-logging:
     enabled: true
     lowDataMode: true
-
-  newrelic-pixie:
-    enabled: false
-
-  pixie-chart:
-    enabled: false
 
   newrelic-infra-operator:
     enabled: true
@@ -53,5 +32,6 @@ nri-bundle:
         integrations_filter:
           enabled: false
 
-  newrelic-eapm-agent:
-    enabled: false
+
+
+
