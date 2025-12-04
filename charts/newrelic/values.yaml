@@ -2,11 +2,13 @@
 global:
   cluster: kirthi
 
-  # Correct New Relic secret reference
-  licenseKey:
-    secret:
-      name: newrelic-license
-      key: license
+  # --- FIX STARTS HERE ---
+  # DO NOT use 'licenseKey'.
+  # DO NOT use 'secret: name: ...' nesting.
+  # Use these two specific variables to point to your existing secret:
+  customSecretName: newrelic-license
+  customSecretLicenseKey: license
+  # --- FIX ENDS HERE ---
 
   lowDataMode: true
   privileged: true
@@ -40,7 +42,6 @@ nri-bundle:
   pixie-chart:
     enabled: false
 
-  # ENABLED because you want the infra operator (CRDs)
   newrelic-infra-operator:
     enabled: true
 
@@ -54,6 +55,3 @@ nri-bundle:
 
   newrelic-eapm-agent:
     enabled: false
-
-
-
