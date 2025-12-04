@@ -2,11 +2,7 @@ apiVersion: newrelic.com/v1beta2
 kind: Instrumentation
 metadata:
   name: newrelic-instrumentation
-  # Remove "namespace: argocd" if you want it to deploy to the same namespace 
-  # as the rest of the chart (which is usually better practice). 
-  # If you strictly need it in 'argocd', keep it, but Helm usually manages 
-  # resources in the release namespace.
-  namespace: argocd 
+  namespace: argocd  # Added as requested
 spec:
   agent:
     language: python
