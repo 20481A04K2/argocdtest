@@ -1,11 +1,13 @@
 # Global settings apply to all sub-charts
 global:
   cluster: kirthi
-  
-  # References the Secret created by your ExternalSecret
-  customSecretName: newrelic-license
-  customSecretLicenseKey: license
-  
+
+  # Correct New Relic secret reference
+  licenseKey:
+    secret:
+      name: newrelic-license
+      key: license
+
   lowDataMode: true
   privileged: true
 
@@ -38,7 +40,7 @@ nri-bundle:
   pixie-chart:
     enabled: false
 
-  # THIS MUST BE TRUE to use the Instrumentation CRD
+  # ENABLED because you want the infra operator (CRDs)
   newrelic-infra-operator:
     enabled: true
 
@@ -52,3 +54,6 @@ nri-bundle:
 
   newrelic-eapm-agent:
     enabled: false
+
+
+
