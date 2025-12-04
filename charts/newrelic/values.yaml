@@ -1,7 +1,10 @@
 # Global settings apply to all sub-charts
 global:
   cluster: cluster-1
-  licenseKey: "052552c092159f297a877532b7621d43FFFFNRAL"
+  licenseKey:
+    secret:
+      name: newrelic-license
+      key: license
   lowDataMode: true
   privileged: true
 
@@ -46,10 +49,6 @@ nri-bundle:
           enabled: false
 
   newrelic-eapm-agent:
-    enabled: false
+    enabl
 
-  k8s-agents-operator:
-    enabled: true
 
-  newrelic-k8s-metrics-adapter:
-    enabled: false
