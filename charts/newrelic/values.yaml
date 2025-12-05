@@ -10,6 +10,7 @@ global:
 nri-bundle:
   newrelic-infrastructure:
     enabled: true
+    
 
   nri-kubernetes:
     enabled: true
@@ -21,18 +22,14 @@ nri-bundle:
   newrelic-logging:
     enabled: true
     lowDataMode: true
+    
 
   newrelic-infra-operator:
     enabled: true
     # --- FIX STARTS HERE ---
     # The operator crashes without at least one policy defined.
     # We add a specific rule so it only injects if you ask for it.
-    config:
-      policies:
-        - name: "default-policy"
-          pod_label: "newrelic-injection"
-          pod_label_value: "enabled"
-    # --- FIX ENDS HERE ---
+    
 
   newrelic-prometheus-agent:
     enabled: true
