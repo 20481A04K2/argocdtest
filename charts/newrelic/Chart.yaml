@@ -6,7 +6,7 @@ version: 0.1.0
 appVersion: "1.0.0"
 dependencies:
   - name: nri-bundle
-    version: 6.0.26
+    version: "6.0.26"
     repository: https://helm-charts.newrelic.com
     # We alias it to ensure values map correctly, though 'nri-bundle' is the default name
     alias: nri-bundle
