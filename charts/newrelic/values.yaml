@@ -1,5 +1,5 @@
 global:
-  cluster: "kirthi"
+  cluster: "kk-1"
   # customSecret: true can be removed, usually just name/key is enough, 
   # but keeping it doesn't hurt if your chart version supports it.
   customSecretName: "newrelic-license"
